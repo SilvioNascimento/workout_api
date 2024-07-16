@@ -86,6 +86,8 @@ async def query(db_session: DatabaseDependency, params: Params = Depends()):
 
     summaries = [
         AtletaSummary(
+            id=str(atleta.pk_id),
+            created_at=atleta.created_at,
             nome=atleta.nome,
             categoria=atleta.categoria,
             centro_treinamento=atleta.centro_treinamento

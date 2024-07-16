@@ -1,8 +1,8 @@
+from datetime import datetime
 from typing import Annotated, Optional
 from pydantic import Field, PositiveFloat
 from workout_api.categorias.schemas import CategoriaIn
 from workout_api.centro_treinamento.schemas import CentroTreinamentoAtleta
-
 from workout_api.contrib.schemas import BaseSchema, OutMixin
 
 
@@ -32,6 +32,8 @@ class AtletaOut(Atleta, OutMixin):
 
 
 class AtletaSummary(Atleta2):
+    id: str
+    created_at: datetime
     nome: str
     categoria: CategoriaIn
     centro_treinamento: CentroTreinamentoAtleta
