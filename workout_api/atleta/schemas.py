@@ -17,12 +17,25 @@ class Atleta(BaseSchema):
     centro_treinamento: Annotated[CentroTreinamentoAtleta, Field(description='Centro de treinamento do atleta')]
 
 
+class Atleta2(BaseSchema):
+    nome: Annotated[str, Field(description='Nome do atleta', example='Joao', max_length=50)]
+    centro_treinamento: Annotated[CentroTreinamentoAtleta, Field(description='Centro de treinamento do atleta')]
+    categoria: Annotated[CategoriaIn, Field(description='Categoria do atleta')]
+
+
 class AtletaIn(Atleta):
     pass
 
 
 class AtletaOut(Atleta, OutMixin):
     pass
+
+
+class AtletaSummary(Atleta2):
+    nome: str
+    categoria: CategoriaIn
+    centro_treinamento: CentroTreinamentoAtleta
+
 
 class AtletaUpdate(BaseSchema):
     nome: Annotated[Optional[str], Field(None, description='Nome do atleta', example='Joao', max_length=50)]
